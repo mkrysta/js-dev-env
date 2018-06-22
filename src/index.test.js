@@ -9,12 +9,10 @@ test("adds 1 + 2 to equal 3", () => {
 
 test("should say hello", (done) => {
     const indexHTML = fs.readFileSync("./src/index.html", "utf-8");
-    const expectedValue = "Hello World!";
     jsdom.env(indexHTML,
         function(errors, window) {
             const h1 = window.document.getElementsByTagName("h1")[0];
-            const actualValue = h1.innerHTML;
-            expect(actualValue).toBe(expectedValue);
+            expect(h1.innerHTML).toBe("Hello World!");
             done();
             window.close();
         }
